@@ -1,6 +1,6 @@
 FROM alpine AS trivy
 
-ENV TRIVY_VERSION=0.18.3
+ENV TRIVY_VERSION=0.44.1
 
 RUN apk update && \
     apk add coreutils wget && \
@@ -18,7 +18,7 @@ RUN apk add bash git coreutils nodejs curl
 
 # Deploy kaniko
 COPY --from=kaniko /kaniko /kaniko
-COPY --from=trivy /trivy /bin/trivy
+COPY --from=trivy /trivy /kaniko/trivy
 
 # Set env variables for kaniko
 ENV HOME /root
