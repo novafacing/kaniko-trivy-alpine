@@ -1,5 +1,7 @@
 FROM alpine AS trivy
 
+RUN rm -rf /var/mail /var/spool/mail
+
 ENV TRIVY_VERSION=0.44.1
 
 RUN apk update && \
